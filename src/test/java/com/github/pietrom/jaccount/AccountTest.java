@@ -12,4 +12,9 @@ public class AccountTest {
 		Account account = new Account(USERNAME);
 		assertEquals(USERNAME, account.getUsername());
 	}
+	
+	@Test
+	public void accountIsAPropertiesSource() throws Exception {
+		PropertiesSource account = new Account(USERNAME);
+	}
 }

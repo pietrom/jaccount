@@ -1,6 +1,6 @@
 package com.github.pietrom.jaccount;
 
-public class Account {
+public class Account implements PropertiesSource {
 	private final String username;
 	
 	public Account(String username) {
