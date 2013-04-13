@@ -20,4 +20,11 @@ public class AccountTest {
 		PropertiesSource account = new Account(USERNAME);
 		assertNull(account.getProperty(KEY_A));
 	}
+	
+	@Test
+	public void givenAnAccountWithAPropertyThenItsGettable() throws Exception {
+		PropertiesSource account = new Account(USERNAME);
+		account.addProperty(KEY_A, VALUE);
+		assertEquals(VALUE, account.getProperty(KEY_A));
+	}
 }
