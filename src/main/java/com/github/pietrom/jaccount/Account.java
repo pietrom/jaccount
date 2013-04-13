@@ -10,4 +10,9 @@ public class Account implements PropertiesSource {
 	public String getUsername() {
 		return username;
 	}
+
+	@Override
+	public Object getProperty(String keyA) {
+		return null;
+	}
 }

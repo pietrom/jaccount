@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class AccountTest {
 	private static final String USERNAME = "pietrom";
+	private static final String KEY_A = "a-key";
+	private static final String VALUE = "a-value";
 
 	@Test
 	public void usernameIsAccessible() throws Exception {
@@ -14,7 +16,8 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void accountIsAPropertiesSource() throws Exception {
+	public void givenAnAccountWithoutPropertiesThenGetPropertyReturnsNull() throws Exception {
 		PropertiesSource account = new Account(USERNAME);
+		assertNull(account.getProperty(KEY_A));
 	}
 }
