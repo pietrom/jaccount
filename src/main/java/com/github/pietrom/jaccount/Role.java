@@ -1,9 +1,22 @@
 package com.github.pietrom.jaccount;
 
-public class Role {
+import java.util.HashMap;
+import java.util.Map;
 
+public class Role implements PropertiesSource {
+	private final Map<String, Object> properties;
+	
 	public Role(String name) {
-		// TODO Auto-generated constructor stub
+		properties = new HashMap<String, Object>();
 	}
 
+	@Override
+	public void addProperty(String key, Object value) {
+		properties.put(key, value);
+	}
+
+	@Override
+	public Object getProperty(String key) {
+		return properties.get(key);
+	}
 }
