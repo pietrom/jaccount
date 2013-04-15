@@ -18,7 +18,7 @@ public class RoleTest {
 	@Test
 	public void givenARoleWithAPropertyThenItsGettable() throws Exception {
 		PropertiesSource account = new Role("role-name");
-		account.addProperty(KEY_A, VALUE);
+		account.setProperty(KEY_A, VALUE);
 		assertEquals(VALUE, account.getProperty(KEY_A));
 	}
 }

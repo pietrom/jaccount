@@ -29,7 +29,7 @@ public class AccountTest {
 	@Test
 	public void givenAnAccountWithAPropertyThenItsGettable() throws Exception {
 		PropertiesSource account = new Account(USERNAME, null);
-		account.addProperty(KEY_A, VALUE);
+		account.setProperty(KEY_A, VALUE);
 		assertEquals(VALUE, account.getProperty(KEY_A));
 	}
 	

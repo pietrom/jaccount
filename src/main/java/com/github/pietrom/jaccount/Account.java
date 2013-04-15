@@ -21,7 +21,7 @@ public class Account implements PropertiesSource {
 	}
 
 	@Override
-	public void addProperty(String key, Object value) {
+	public void setProperty(String key, Object value) {
 		properties.put(key, value);
 	}
 
