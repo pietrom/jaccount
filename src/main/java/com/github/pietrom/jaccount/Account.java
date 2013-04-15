@@ -2,17 +2,15 @@ package com.github.pietrom.jaccount;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Account implements PropertiesSource {
 	private final String username;
-	private final Map<String, Object> properties;
+	private final PropertiesSource propertiesSource;
 	private final Collection<Role> roles;
 	
 	public Account(String username, Collection<Role> roles) {
 		this.username = username;
-		this.properties = new HashMap<String, Object>();
+		this.propertiesSource = new SimplePropertiesSource();
 		this.roles = roles;
 	}
 
@@ -22,12 +20,12 @@ public class Account implements PropertiesSource {
 
 	@Override
 	public void setProperty(String key, Object value) {
-		properties.put(key, value);
+		propertiesSource.setProperty(key, value);
 	}
 
 	@Override
 	public Object getProperty(String key) {
-		return properties.get(key);
+		return propertiesSource.getProperty(key);
 	}
 
 	public Collection<Role> getRoles() {

@@ -1,22 +1,19 @@
 package com.github.pietrom.jaccount;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Role implements PropertiesSource {
-	private final Map<String, Object> properties;
-	
+	private final PropertiesSource propertiesSource;
+
 	public Role(String name) {
-		properties = new HashMap<String, Object>();
+		propertiesSource = new SimplePropertiesSource();
 	}
 
 	@Override
 	public void setProperty(String key, Object value) {
-		properties.put(key, value);
+		propertiesSource.setProperty(key, value);
 	}
 
 	@Override
-	public Object getProperty(String key) {
-		return properties.get(key);
+	public Object getProperty(String keyA) {
+		return propertiesSource.getProperty(keyA);
 	}
 }
