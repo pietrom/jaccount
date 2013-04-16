@@ -1,10 +1,12 @@
 package com.github.pietrom.jaccount;
 
 public class Role implements PropertiesSource {
+	private final String name;
 	private final PropertiesSource propertiesSource;
 
 	public Role(String name) {
-		propertiesSource = new SimplePropertiesSource();
+		this.name = name;
+		this.propertiesSource = new SimplePropertiesSource();
 	}
 
 	@Override
@@ -15,5 +17,9 @@ public class Role implements PropertiesSource {
 	@Override
 	public Object getProperty(String keyA) {
 		return propertiesSource.getProperty(keyA);
+	}
+
+	public boolean matches(String roleName) {
+		return name.equals(roleName);
 	}
 }

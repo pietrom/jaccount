@@ -23,4 +23,11 @@ public class RoleTest {
 		account.setProperty(KEY_A, VALUE);
 		assertEquals(VALUE, account.getProperty(KEY_A));
 	}
+	
+	@Test
+	public void matchesMethodTestsRoleName() throws Exception {
+		Role role = new Role(ROLE_NAME);
+		assertTrue(role.matches(ROLE_NAME));
+		assertFalse(role.matches(KEY_A));
+	}
 }
