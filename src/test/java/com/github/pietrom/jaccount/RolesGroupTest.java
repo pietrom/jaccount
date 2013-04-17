@@ -48,4 +48,11 @@ public class RolesGroupTest {
 		group.setProperty(A_KEY, B_VALUE);
 		assertEquals(B_VALUE, group.getProperty(A_KEY));
 	}
+	
+	@Test
+	public void givenNestedRolesWhichDefineTheSamePropertyWhenGroupIsQueriedThenValueFromFirstAddedRoleIsReturned() throws Exception {
+		role1.setProperty(A_KEY, A_VALUE);
+		role2.setProperty(A_KEY, B_VALUE);
+		assertEquals(A_VALUE, group.getProperty(A_KEY));
+	}
 }
