@@ -32,6 +32,6 @@ public class RolesGroup extends Role {
 				return value;
 			}
 		}
-		return null;
+		return super.getProperty(key);
 	}
 }

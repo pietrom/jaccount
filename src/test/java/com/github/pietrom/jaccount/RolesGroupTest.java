@@ -1,5 +1,6 @@
 package com.github.pietrom.jaccount;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -31,5 +32,12 @@ public class RolesGroupTest {
 	public void rolesGroupDelegatesGetPropertyToNestedRoles() throws Exception {
 		role1.setProperty("a-key", "a-value");
 		assertEquals("a-value", group.getProperty("a-key"));
+	}
+	
+	@Test
+	public void rolesGroupHasItsOwnProperties() throws Exception {
+		role1.setProperty("a-key", "a-value");
+		group.setProperty("b-key", "b-value");
+		assertEquals("b-value", group.getProperty("b-key"));
 	}
 }
