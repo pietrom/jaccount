@@ -3,9 +3,9 @@ package com.github.pietrom.jaccount;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class RoleGroup extends Role {
+public class RolesGroup extends Role {
 	private final Collection<Role> roles;
-	public RoleGroup(String name) {
+	public RolesGroup(String name) {
 		super(name);
 		this.roles = new LinkedList<Role>();
 	}
