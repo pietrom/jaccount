@@ -9,6 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RolesGroupTest {
+	private static final String A_KEY = "a-key";
+	private static final String A_VALUE = "a-value";
+	private static final String B_KEY = "b-key";
+	private static final String B_VALUE = "b-value";
 	private Role role1, role2;
 	private RolesGroup group;
 	
@@ -30,14 +34,14 @@ public class RolesGroupTest {
 	
 	@Test
 	public void rolesGroupDelegatesGetPropertyToNestedRoles() throws Exception {
-		role1.setProperty("a-key", "a-value");
-		assertEquals("a-value", group.getProperty("a-key"));
+		role1.setProperty(A_KEY, A_VALUE);
+		assertEquals(A_VALUE, group.getProperty(A_KEY));
 	}
 	
 	@Test
 	public void rolesGroupHasItsOwnProperties() throws Exception {
-		role1.setProperty("a-key", "a-value");
-		group.setProperty("b-key", "b-value");
-		assertEquals("b-value", group.getProperty("b-key"));
+		role1.setProperty(A_KEY, A_VALUE);
+		group.setProperty(B_KEY, B_VALUE);
+		assertEquals(B_VALUE, group.getProperty(B_KEY));
 	}
 }
