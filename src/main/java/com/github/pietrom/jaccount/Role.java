@@ -15,8 +15,8 @@ public class Role implements PropertiesSource {
 	}
 
 	@Override
-	public Object getProperty(String keyA) {
-		return propertiesSource.getProperty(keyA);
+	public Object getProperty(String key) {
+		return propertiesSource.getProperty(key);
 	}
 
 	public boolean matches(String roleName) {

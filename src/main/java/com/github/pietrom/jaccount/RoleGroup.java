@@ -25,9 +25,9 @@ public class RoleGroup extends Role {
 	}
 	
 	@Override
-	public Object getProperty(String keyA) {
+	public Object getProperty(String key) {
 		for(Role role : roles) {
-			Object value = role.getProperty(keyA);
+			Object value = role.getProperty(key);
 			if(value != null) {
 				return value;
 			}
