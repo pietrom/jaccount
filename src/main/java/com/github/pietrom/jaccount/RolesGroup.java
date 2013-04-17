@@ -26,12 +26,17 @@ public class RolesGroup extends Role {
 	
 	@Override
 	public Object getProperty(String key) {
+		Object value = super.getProperty(key);
+		if(value != null) {
+			return value;
+		}
+		
 		for(Role role : roles) {
-			Object value = role.getProperty(key);
+			value = role.getProperty(key);
 			if(value != null) {
 				return value;
 			}
 		}
-		return super.getProperty(key);
+		return null;
 	}
 }

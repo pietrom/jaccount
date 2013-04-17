@@ -41,4 +41,11 @@ public class RolesGroupTest {
 		group.setProperty(B_KEY, B_VALUE);
 		assertEquals(B_VALUE, group.getProperty(B_KEY));
 	}
+	
+	@Test
+	public void rolesGroupOverridesPropertyDefinition() throws Exception {
+		role1.setProperty(A_KEY, A_VALUE);
+		group.setProperty(A_KEY, B_VALUE);
+		assertEquals(B_VALUE, group.getProperty(A_KEY));
+	}
 }
