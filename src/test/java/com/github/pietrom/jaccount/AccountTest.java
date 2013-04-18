@@ -11,7 +11,8 @@ public class AccountTest {
 	private static final String USERNAME = "pietrom";
 	private static final String KEY_A = "a-key";
 	private static final String VALUE = "a-value";
-	private static final Role ROLE_A = new Role("role-a");
+	private static final String ROLE_A_NAME = "role-a";
+	private static final Role ROLE_A = new Role(ROLE_A_NAME);
 	private static final Role ROLE_B = new Role("role-b");
 
 	@Test
@@ -40,5 +41,14 @@ public class AccountTest {
 		roles.add(ROLE_B);
 		Account account = new Account(USERNAME, roles);
 		assertTrue(account.getRoles().contains(ROLE_A));
+	}
+	
+	@Test
+	public void hasRole() throws Exception {
+		Collection<Role> roles = new HashSet<Role>();
+		roles.add(ROLE_A);
+		roles.add(ROLE_B);
+		Account account = new Account(USERNAME, roles);
+		assertTrue(account.hasRole(ROLE_A_NAME));
 	}
 }

@@ -31,4 +31,13 @@ public class Account implements PropertiesSource {
 	public Collection<Role> getRoles() {
 		return Collections.unmodifiableCollection(roles);
 	}
+
+	public boolean hasRole(String roleName) {
+		for (Role role : roles) {
+			if(role.matches(roleName)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
