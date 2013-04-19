@@ -2,12 +2,16 @@ package com.github.pietrom.jaccount;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 public class Account implements PropertiesSource {
 	private final String username;
 	private final PropertiesSource propertiesSource;
 	private final Collection<Role> roles;
 	
+	public Account(String username) {
+		this(username, new LinkedHashSet<Role>());
+	}
 	public Account(String username, Collection<Role> roles) {
 		this.username = username;
 		this.propertiesSource = new SimplePropertiesSource();
@@ -25,7 +29,16 @@ public class Account implements PropertiesSource {
 
 	@Override
 	public Object getProperty(String key) {
-		return propertiesSource.getProperty(key);
+		Object property = propertiesSource.getProperty(key);
+		if(property == null) {
+			for(Role role : roles) {
+				property = role.getProperty(key);
+				if(property != null) {
+					return property;
+				}
+			}
+		}
+		return property;
 	}
 
 	public Collection<Role> getRoles() {

@@ -1,7 +1,10 @@
 package com.github.pietrom.jaccount;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -11,6 +14,7 @@ public class AccountTest {
 	private static final String USERNAME = "pietrom";
 	private static final String KEY_A = "a-key";
 	private static final String VALUE = "a-value";
+	private static final String VALUE_B = "b-value";
 	private static final String ROLE_A_NAME = "role-a";
 	private static final String ROLE_B_NAME = "role-b";
 	private static final Role ROLE_A = new Role(ROLE_A_NAME);
@@ -18,19 +22,19 @@ public class AccountTest {
 
 	@Test
 	public void usernameIsAccessible() throws Exception {
-		Account account = new Account(USERNAME, null);
+		Account account = new Account(USERNAME);
 		assertEquals(USERNAME, account.getUsername());
 	}
 	
 	@Test
 	public void givenAnAccountWithoutPropertiesThenGetPropertyReturnsNull() throws Exception {
-		PropertiesSource account = new Account(USERNAME, null);
+		PropertiesSource account = new Account(USERNAME);
 		assertNull(account.getProperty(KEY_A));
 	}
 	
 	@Test
 	public void givenAnAccountWithAPropertyThenItsGettable() throws Exception {
-		PropertiesSource account = new Account(USERNAME, null);
+		PropertiesSource account = new Account(USERNAME);
 		account.setProperty(KEY_A, VALUE);
 		assertEquals(VALUE, account.getProperty(KEY_A));
 	}
@@ -64,5 +68,26 @@ public class AccountTest {
 		Account account = new Account(USERNAME, roles);
 		assertTrue(account.hasRole(ROLE_A_NAME));
 		assertTrue(account.hasRole(ROLE_B_NAME));
+	}
+	
+	@Test
+	public void accountInheritsPropertiesFromRoles() throws Exception {
+		Role aRole = new Role("aRole");
+		aRole.setProperty(KEY_A, VALUE);
+		Account account = new Account(USERNAME, buildRolesList(ROLE_A, aRole, ROLE_B));
+		assertEquals(VALUE, account.getProperty(KEY_A));
+	}
+	
+	@Test
+	public void accountOverwritesPropertiesFromRoles() throws Exception {
+		Role aRole = new Role("aRole");
+		aRole.setProperty(KEY_A, VALUE);
+		Account account = new Account(USERNAME, buildRolesList(ROLE_A, aRole, ROLE_B));
+		account.setProperty(KEY_A, VALUE_B);
+		assertEquals(VALUE_B, account.getProperty(KEY_A));
+	}
+	
+	private Collection<Role> buildRolesList(Role ... roles) {
+		return Arrays.asList(roles);
 	}
 }
