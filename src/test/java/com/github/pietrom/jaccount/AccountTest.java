@@ -13,7 +13,7 @@ import org.junit.Test;
 public class AccountTest {
 	private static final String USERNAME = "pietrom";
 	private static final String KEY_A = "a-key";
-	private static final String VALUE = "a-value";
+	private static final String VALUE_A = "a-value";
 	private static final String VALUE_B = "b-value";
 	private static final String ROLE_A_NAME = "role-a";
 	private static final String ROLE_B_NAME = "role-b";
@@ -35,8 +35,8 @@ public class AccountTest {
 	@Test
 	public void givenAnAccountWithAPropertyThenItsGettable() throws Exception {
 		PropertiesSource account = new Account(USERNAME);
-		account.setProperty(KEY_A, VALUE);
-		assertEquals(VALUE, account.getProperty(KEY_A));
+		account.setProperty(KEY_A, VALUE_A);
+		assertEquals(VALUE_A, account.getProperty(KEY_A));
 	}
 	
 	@Test
@@ -73,15 +73,15 @@ public class AccountTest {
 	@Test
 	public void accountInheritsPropertiesFromRoles() throws Exception {
 		Role aRole = new Role("aRole");
-		aRole.setProperty(KEY_A, VALUE);
+		aRole.setProperty(KEY_A, VALUE_A);
 		Account account = new Account(USERNAME, buildRolesList(ROLE_A, aRole, ROLE_B));
-		assertEquals(VALUE, account.getProperty(KEY_A));
+		assertEquals(VALUE_A, account.getProperty(KEY_A));
 	}
 	
 	@Test
 	public void accountOverwritesPropertiesFromRoles() throws Exception {
 		Role aRole = new Role("aRole");
-		aRole.setProperty(KEY_A, VALUE);
+		aRole.setProperty(KEY_A, VALUE_A);
 		Account account = new Account(USERNAME, buildRolesList(ROLE_A, aRole, ROLE_B));
 		account.setProperty(KEY_A, VALUE_B);
 		assertEquals(VALUE_B, account.getProperty(KEY_A));
