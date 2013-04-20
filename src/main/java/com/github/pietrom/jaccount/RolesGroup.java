@@ -39,4 +39,14 @@ public class RolesGroup extends Role {
 		}
 		return null;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (Role role : roles) {
+			builder.append(role.toString()).append(",");
+		}
+		builder.replace(builder.lastIndexOf(","), builder.length(), "");
+		return builder.toString();
+	}
 }

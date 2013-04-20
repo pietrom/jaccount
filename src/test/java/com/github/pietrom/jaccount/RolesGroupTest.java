@@ -1,6 +1,8 @@
 package com.github.pietrom.jaccount;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,5 +56,11 @@ public class RolesGroupTest {
 		role1.setProperty(A_KEY, A_VALUE);
 		role2.setProperty(A_KEY, B_VALUE);
 		assertEquals(A_VALUE, group.getProperty(A_KEY));
+	}
+	
+	@Test
+	public void toStringContainsNestedRolesNames() throws Exception {
+		assertTrue(group.toString().contains("role-1"));
+		assertTrue(group.toString().contains("role-2"));
 	}
 }
