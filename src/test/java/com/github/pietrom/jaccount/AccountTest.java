@@ -1,5 +1,6 @@
 package com.github.pietrom.jaccount;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -46,6 +47,15 @@ public class AccountTest {
 		roles.add(ROLE_B);
 		Account account = new Account(USERNAME, roles);
 		assertTrue(account.getRoles().contains(ROLE_A));
+	}
+	
+	@Test(expected=UnsupportedOperationException.class)
+	public void accountClientsCantBreakRolesEncapsulation() throws Exception {
+		Collection<Role> roles = new HashSet<Role>();
+		roles.add(ROLE_A);
+		roles.add(ROLE_B);
+		Account account = new Account(USERNAME, roles);
+		account.getRoles().add(new Role("cant-add"));
 	}
 	
 	@Test
