@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RolesGroupTest {
+	private static final String ROLE_1_NAME = "role-1";
+	private static final String ROLE_2_NAME = "role-2";
+	private static final String GROUP_NAME = "group";
 	private static final String A_KEY = "a-key";
 	private static final String A_VALUE = "a-value";
 	private static final String B_KEY = "b-key";
@@ -17,17 +20,17 @@ public class RolesGroupTest {
 	
 	@Before
 	public void initFixtures() {
-		role1 = new Role("role-1");
-		role2 = new Role("role-2");
-		group = new RolesGroup("group");
+		role1 = new Role(ROLE_1_NAME);
+		role2 = new Role(ROLE_2_NAME);
+		group = new RolesGroup(GROUP_NAME);
 		group.addRole(role1);
 		group.addRole(role2);
 	}
 	@Test
 	public void aRolesGroupLooksOutLikeARole() throws Exception {
 		Role role = group;
-		assertTrue(role.matches("role-1"));
-		assertTrue(role.matches("role-2"));
+		assertTrue(role.matches(ROLE_1_NAME));
+		assertTrue(role.matches(ROLE_2_NAME));
 		assertFalse(role.matches("role-3"));
 	}
 	
@@ -60,12 +63,12 @@ public class RolesGroupTest {
 	
 	@Test
 	public void toStringContainsNestedRolesNames() throws Exception {
-		assertTrue(group.toString().contains("role-1"));
-		assertTrue(group.toString().contains("role-2"));
+		assertTrue(group.toString().contains(ROLE_1_NAME));
+		assertTrue(group.toString().contains(ROLE_2_NAME));
 	}
 	
 	@Test
 	public void toStringContainsGroup() throws Exception {
-		assertTrue(group.toString().contains("group"));
+		assertTrue(group.toString().contains(GROUP_NAME));
 	}
 }
