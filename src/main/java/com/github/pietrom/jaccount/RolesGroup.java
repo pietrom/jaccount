@@ -42,11 +42,11 @@ public class RolesGroup extends Role {
 	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
+		StringBuilder builder = new StringBuilder(super.toString()).append(": [");
 		for (Role role : roles) {
 			builder.append(role.toString()).append(",");
 		}
-		builder.replace(builder.lastIndexOf(","), builder.length(), "");
+		builder.replace(builder.lastIndexOf(","), builder.length(), "").append("]");
 		return builder.toString();
 	}
 }

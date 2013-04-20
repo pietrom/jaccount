@@ -63,4 +63,9 @@ public class RolesGroupTest {
 		assertTrue(group.toString().contains("role-1"));
 		assertTrue(group.toString().contains("role-2"));
 	}
+	
+	@Test
+	public void toStringContainsGroup() throws Exception {
+		assertTrue(group.toString().contains("group"));
+	}
 }
