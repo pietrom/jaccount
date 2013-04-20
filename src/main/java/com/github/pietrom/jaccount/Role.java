@@ -22,4 +22,9 @@ public class Role implements PropertiesSource {
 	public boolean matches(String roleName) {
 		return name.equals(roleName);
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }
