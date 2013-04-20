@@ -41,24 +41,6 @@ public class AccountTest {
 	}
 	
 	@Test
-	public void accountHasRolesAssociated() throws Exception {
-		Collection<Role> roles = new HashSet<Role>();
-		roles.add(ROLE_A);
-		roles.add(ROLE_B);
-		Account account = new Account(USERNAME, roles);
-		assertTrue(account.getRoles().contains(ROLE_A));
-	}
-	
-	@Test(expected=UnsupportedOperationException.class)
-	public void accountClientsCantBreakRolesEncapsulation() throws Exception {
-		Collection<Role> roles = new HashSet<Role>();
-		roles.add(ROLE_A);
-		roles.add(ROLE_B);
-		Account account = new Account(USERNAME, roles);
-		account.getRoles().add(new Role("cant-add"));
-	}
-	
-	@Test
 	public void hasRole() throws Exception {
 		Collection<Role> roles = new HashSet<Role>();
 		roles.add(ROLE_A);
