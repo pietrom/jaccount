@@ -1,7 +1,6 @@
 package com.github.pietrom.jaccount;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 
 public class Account implements PropertiesSource {
