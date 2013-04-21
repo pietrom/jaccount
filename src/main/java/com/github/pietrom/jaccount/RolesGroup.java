@@ -1,6 +1,7 @@
 package com.github.pietrom.jaccount;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class RolesGroup extends Role {
@@ -30,14 +31,11 @@ public class RolesGroup extends Role {
 		if(value != null) {
 			return value;
 		}
-		
-		for(Role role : roles) {
-			value = role.getProperty(key);
-			if(value != null) {
-				return value;
-			}
+		Iterator<Role> it = roles.iterator();
+		while(value == null && it.hasNext()) {
+			value = it.next().getProperty(key);
 		}
-		return null;
+		return value;
 	}
 	
 	@Override
